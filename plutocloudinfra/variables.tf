@@ -23,8 +23,3 @@ variable "client_id" {
   default     = ""
   description = "Azure Client ID"
 }
-
-variable "resource_group_name" {
-  type = string
-  
-}

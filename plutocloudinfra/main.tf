@@ -13,9 +13,20 @@ provider "azurerm" {
 
 }
 
+
+variable "resource_group_names" {
+    type = map
+    default = {
+        dev = "az-dev-rg"
+        staging = "az-staging-rg"
+        prod = "az-prod-rg"
+    }
+  
+}
+
   resource "azurerm_resource_group" "rg" {
 
-      name = var.resource_group_name
+      name = var.resource_group_names[terraform.workspace]
       location = "uksouth"
     
   }
