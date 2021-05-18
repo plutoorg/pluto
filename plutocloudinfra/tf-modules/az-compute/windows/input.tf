@@ -97,4 +97,4 @@ variable "ad_domain" {
     default = ""
     description = "On Prem AD domain to join VM"
   
-}s
+}
