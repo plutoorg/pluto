@@ -23,3 +23,13 @@ variable "client_id" {
   default     = ""
   description = "Azure Client ID"
 }
+
+variable "prefix" {
+  type = string
+  default = "pluto" # e.g. -  Project Name can be use as prefix
+  
+}
+
+variable "name" {
+  
+}
