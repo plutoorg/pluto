@@ -2,7 +2,6 @@ variable "tenant_id" {
   type        = string
   default     = ""
   description = "Azure Tenant  ID"
-
 }
 
 variable "client_secret" {
@@ -24,12 +23,3 @@ variable "client_id" {
   description = "Azure Client ID"
 }
 
-variable "prefix" {
-  type = string
-  default = "pluto" # e.g. -  Project Name can be use as prefix
-  
-}
-
-variable "name" {
-  
-}

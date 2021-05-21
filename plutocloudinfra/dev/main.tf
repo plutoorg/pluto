@@ -24,9 +24,9 @@ variable "resource_group_names" {
   
 }
 
-  resource "azurerm_resource_group" "rg" {
+module "az-pluto-windowvm" {
 
-      name = var.resource_group_names[terraform.workspace]
-      location = "uksouth"
-    
-  }
+  source = "../tf-modules/az-compute/windows/main.tf"
+
+  
+}
