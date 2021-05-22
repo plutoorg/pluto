@@ -24,14 +24,15 @@ variable "user_password" {
 
 }
 
-variable "size" {
+variable "vm_size" {
 
   type        = string
   description = "The azure instabce size of the VM"
+  default = "Standard_DS1_v2"
 
 }
 
-variable "count" {
+variable "vm_count" {
   type        = string
   default     = "1"
   description = "Number of VMs to create"
@@ -39,7 +40,7 @@ variable "count" {
 
 variable "managed_disk_type" {
   type        = string
-  ddefault    = "Standard_LRS"
+  default    = "Standard_LRS"
   description = "storage tier to be used for persistent disk"
 
 }

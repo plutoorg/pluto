@@ -2,7 +2,7 @@
 
 provider "azurerm" {
 
-  version = "2.46.0"
+  #version = "3.0.1 "
 
   subscription_id = var.subscription_id
   client_id       = var.client_id
@@ -13,20 +13,18 @@ provider "azurerm" {
 
 }
 
-
 variable "resource_group_names" {
-    type = map
-    default = {
-        dev = "az-dev-rg"
-        staging = "az-staging-rg"
-        prod = "az-prod-rg"
-    }
-  
+  type = map(any)
+  default = {
+    dev     = "az-dev-rg"
+    staging = "az-staging-rg"
+    prod    = "az-prod-rg"
+  }
+
 }
 
-module "az-pluto-windowvm" {
+module "windows_vm" {
 
-  source = "../tf-modules/az-compute/windows/main.tf"
+  source = "./tf-modules/az-compute/windows_vm"
 
-  
 }
