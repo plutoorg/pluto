@@ -24,7 +24,7 @@ variable "resource_group_names" {
 }
 
 module "windows_vm" {
-
-  source = "./tf-modules/az-compute/windows_vm"
-
+  source                = "./tf-modules/az-compute/windows_vm"
+  subnet_address_prefix = ["10.0.2.0/24"]
+  vnet_adress_space     = ["10.0.0.0/16"]
 }
