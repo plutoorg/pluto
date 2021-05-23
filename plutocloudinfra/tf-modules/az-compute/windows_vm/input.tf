@@ -69,6 +69,23 @@ variable "subnet_address_prefix" {
 }
 
 
+variable "subnet_ip_frontend" {
+  description = "frontend subnet ip "
+}
+
+variable "subnet_ip_backend" {
+  description = "backend subnet ip"
+}
+
+variable "subnet_ip_database" {
+  desdescription = "databse subnet ip"
+}
+variable "vnet_address_space" {
+  description = "vnet Address space"
+}
+
+
+
 
 #encryption Options
 
@@ -134,7 +151,7 @@ variable "vm_source_image_sku" {
 
 #version 
 variable "vm_source_image_version" {
-  type = string
+  type        = string
   default     = "latest" #latest
   description = "azurerm : Vm source_image_reference : version "
 }

@@ -2,11 +2,25 @@ provider "azurerm" {
   features {}
 }
 
+
 resource "azurerm_resource_group" "main" {
   name     = "${var.prefix}-rg"
   location = var.location
 }
 
+module "az_vnet_subnet" {
+
+  source             = "../az-vnet"
+  prefix             = "${var.prefix}-rg"
+  location           = var.location
+  resource_grp_name  = azurerm_resource_group.main.name
+  vnet_address_space = var.vnet_adress_space
+  subnet_ip_frontend = var.subnet_ip_frontend
+  subnet_ip_backend  = var.subnet_ip_backend
+  subnet_ip_database = var.subnet_ip_database
+}
+
+/*
 resource "azurerm_virtual_network" "main" {
   name                = "${var.prefix}-vnet"
   address_space       = var.vnet_adress_space #["10.0.0.0/16"]
@@ -18,9 +32,8 @@ resource "azurerm_subnet" "internal" {
   name                 = "internal"
   resource_group_name  = azurerm_resource_group.main.name
   virtual_network_name = azurerm_virtual_network.main.name
-  address_prefixes       = var.subnet_address_prefix #"10.0.2.0/24"
-}
-
+  address_prefixes     = var.subnet_address_prefix #"10.0.2.0/24"
+} */
 
 resource "azurerm_network_interface" "main" {
   name                = "${var.prefix}-nic"
@@ -29,7 +42,7 @@ resource "azurerm_network_interface" "main" {
 
   ip_configuration {
     name                          = "internal"
-    subnet_id                     = azurerm_subnet.internal.id
+    subnet_id                     = azurerm_subnet.frontend.id
     private_ip_address_allocation = "Dynamic"
   }
 }
