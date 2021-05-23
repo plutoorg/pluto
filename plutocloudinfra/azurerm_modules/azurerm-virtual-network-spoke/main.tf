@@ -98,6 +98,7 @@ resource "azurerm_subnet" "snet" {
   virtual_network_name = azurerm_virtual_network.vnet.name
   address_prefixes     = each.value.subnet_address_prefix
   service_endpoints    = lookup(each.value, "service_endpoints", [])
+  
   # Applicable to the subnets which used for Private link endpoints or services 
   enforce_private_link_endpoint_network_policies = lookup(each.value, "enforce_private_link_endpoint_network_policies", null)
   enforce_private_link_service_network_policies  = lookup(each.value, "enforce_private_link_service_network_policies", null)
