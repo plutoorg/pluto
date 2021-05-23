@@ -1,7 +1,7 @@
 module "vnet-hub" {
-  source  = "../plutocloudinfra/azurerm_modules/azurerm-virtual-network-hub"
+  source  = "../azurerm_modules/azurerm-virtual-network-hub"
   #version = "2.1.0"
-  
+
   
   # By default, this module will create a resource group, proivde the name here
   # to use an existing resource group, specify the existing resource group name, 
@@ -124,10 +124,10 @@ module "vnet-hub" {
   # Adding TAG's to your Azure resources (Required)
   # ProjectName and Env are already declared above, to use them here, create a varible. 
   tags = {
-    ProjectName  = "demo-internal"
+    ProjectName  = "Pluto"
     Env          = "Management"
     Owner        = "plutoadmin@plutorg.com"
-    BusinessUnit = "Pluto"
+    BusinessUnit = "PlutoOrg"
     ServiceClass = "Gold"
   }
 }
