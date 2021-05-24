@@ -1,19 +1,20 @@
 module "vnet-spoke" {
-   source  = "../azurerm_modules/azurerm-virtual-network-hub"
+   source  = "../azurerm_modules/azurerm-virtual-network-spoke"
   # version = "2.1.0"
 
   # By default, this module will create a resource group, proivde the name here 
   # to use an existing resource group, specify the existing resource group name, 
   # and set the argument to `create_resource_group = false`. Location will be same as existing RG. 
-  resource_group_name = "rg-pluto-spoke-001"
+  resource_group_name = "rg-pluto-spoke01"
   location            = "Uk South"
-  spoke_vnet_name     = "pluto-spoke-vnet-001"
+  spoke_vnet_name     = "vnet-pluto-spoke01"
 
   # Specify if you are deploying the spoke VNet using the same hub Azure subscription
   is_spoke_deployed_to_same_hub_subscription = true
 
   # Provide valid VNet Address space for spoke virtual network.  
   vnet_address_space = ["10.2.0.0/16"]
+
 
   # Hub network details to create peering and other setup
   hub_virtual_network_id          = var.hub_virtual_network_id

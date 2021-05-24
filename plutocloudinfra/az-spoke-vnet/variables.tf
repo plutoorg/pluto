@@ -1,11 +1,11 @@
 variable "hub_virtual_network_id" {
   description = "The id of hub virutal network"
-  default     = ""
+  default     = "/subscriptions/2c93b3a2-056f-4030-91a5-c95219b64438/resourceGroups/rg-pluto-hub/providers/Microsoft.Network/virtualNetworks/vnet-pluto-hub-vnet-uksouth"
 }
 
 variable "hub_firewall_private_ip_address" {
   description = "The private IP of the hub virtual network firewall"
-  default     = ""
+  default     = "10.1.0.4"
 }
 
 variable "private_dns_zone_name" {
@@ -15,7 +15,7 @@ variable "private_dns_zone_name" {
 
 variable "hub_storage_account_id" {
   description = "The id of hub storage id for logs storage"
-  default     = ""
+  default     = "/subscriptions/2c93b3a2-056f-4030-91a5-c95219b64438/resourceGroups/rg-pluto-hub/providers/Microsoft.Storage/storageAccounts/stdiaglogsplutohubvnet"
 }
 
 variable "log_analytics_workspace_id" {
