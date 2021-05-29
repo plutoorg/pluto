@@ -52,26 +52,26 @@ resource "azurerm_virtual_network" "vnet" {
   dns_servers         = var.dns_servers
   tags                = merge({ "ResourceName" = lower("vnet-${var.hub_vnet_name}-${local.location}") }, var.tags, )
 
-  dynamic "ddos_protection_plan" {
-    for_each = local.if_ddos_enabled
+  #dynamic "ddos_protection_plan" {
+  #  for_each = local.if_ddos_enabled
 
-    content {
-      id     = azurerm_network_ddos_protection_plan.ddos[0].id
-      enable = true
-    }
-  }
+  #  content {
+  #    id     = azurerm_network_ddos_protection_plan.ddos[0].id
+  #    enable = true
+  #  }
+  #}
 }
 
 #--------------------------------------------
 # Ddos protection plan - Default is "true"
 #--------------------------------------------
-resource "azurerm_network_ddos_protection_plan" "ddos" {
-  count               = var.create_ddos_plan ? 1 : 0
-  name                = lower("${var.hub_vnet_name}-ddos-protection-plan")
-  resource_group_name = local.resource_group_name
-  location            = local.location
-  tags                = merge({ "ResourceName" = lower("${var.hub_vnet_name}-ddos-protection-plan") }, var.tags, )
-}
+#resource "azurerm_network_ddos_protection_plan" "ddos" {
+#  count               = var.create_ddos_plan ? 0 : 0 # 1:0
+#  name                = lower("${var.hub_vnet_name}-ddos-protection-plan")
+#  resource_group_name = local.resource_group_name
+#  location            = local.location
+#  tags                = merge({ "ResourceName" = lower("${var.hub_vnet_name}-ddos-protection-plan") }, var.tags, )
+#}
 
 #-------------------------------------
 # Network Watcher - Default is "true"

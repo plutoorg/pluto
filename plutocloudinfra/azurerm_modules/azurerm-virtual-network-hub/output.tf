@@ -47,10 +47,10 @@ output "network_security_group_ids" {
 }
 
 # DDoS Protection Plan
-output "ddos_protection_plan_id" {
-  description = "Ddos protection plan details"
-  value       = var.create_ddos_plan ? element(concat(azurerm_network_ddos_protection_plan.ddos.*.id, [""]), 0) : null
-}
+#output "ddos_protection_plan_id" {
+#  description = "Ddos protection plan details"
+#  value       = var.create_ddos_plan ? element(concat(azurerm_network_ddos_protection_plan.ddos.*.id, [""]), 0) : null
+#}
 
 # Network Watcher
 output "network_watcher_id" {
