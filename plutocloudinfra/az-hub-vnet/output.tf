@@ -46,10 +46,10 @@ output "network_security_group_ids" {
 }
 
 # DDoS Protection plan
-output "ddos_protection_plan_id" {
-  description = "Ddos protection plan details"
-  value       = module.vnet-hub.ddos_protection_plan_id
-}
+#output "ddos_protection_plan_id" {
+#  description = "Ddos protection plan details"
+#  value       = module.vnet-hub.ddos_protection_plan_id
+#}
 
 # Network Watcher
 output "network_watcher_id" {
