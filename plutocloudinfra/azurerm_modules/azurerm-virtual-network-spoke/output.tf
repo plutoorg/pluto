@@ -43,10 +43,10 @@ output "network_security_group_ids" {
   value       = [for n in azurerm_network_security_group.nsg : n.id]
 }
 
-output "ddos_protection_plan_id" {
-  description = "Ddos protection plan details"
-  value       = var.create_ddos_plan ? element(concat(azurerm_network_ddos_protection_plan.ddos.*.id, [""]), 0) : null
-}
+#output "ddos_protection_plan_id" {
+#  description = "Ddos protection plan details"
+#  value       = var.create_ddos_plan ? element(concat(azurerm_network_ddos_protection_plan.ddos.*.id, [""]), 0) : null
+#}
 
 output "network_watcher_id" {
   description = "ID of Network Watcher"
