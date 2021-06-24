@@ -38,18 +38,11 @@ db.Library.Books.insertMany([
 dotnet user-secrets init
 dotnet user-secrets -p plutoweb.csproj set "Kestrel:Certificates:Development:Password" "password#1"
 
-
 dotnet dev-certs https -ep ${HOME}/.aspnet/https/plutoweb.pfx -p crypticpassword
 dotnet dev-certs https --trust
 dotnet dev-certs https --clean 
 
 dotnet user-secrets -p plutoweb.csproj set "Kestrel:Certificates:Development:Password" "crypticpassword"
-
-
-# Removed Unwanted Images 
-docker run -ti --rm prasant/alpinedemo:1.0 /bin/sh
-docker rmi $(docker images -q --filter "dangling=true")
-
 
 Steps 
 1- -p 8080:80 -p 8081:443 
@@ -63,13 +56,12 @@ Steps
 
 docker run --rm -it -p 8000:80 -p 8001:443 -e ASPNETCORE_URLS="https://+;http://+" -e ASPNETCORE_HTTPS_PORT=8001 -e ASPNETCORE_ENVIRONMENT=Development -v ${HOME}/.microsoft/usersecrets/:/root/.microsoft/usersecrets -v ${HOME}/.aspnet/https:/root/.aspnet/https/ aspnetapp
 
+# Removed Unwanted Images 
+docker run -ti --rm prasant/alpinedemo:1.0 /bin/sh
+docker rmi $(docker images -q --filter "dangling=true")
 
-# Print Enviornment Variables - Command in Mac OS
-printenv
+# Docker Image Tagging before pushing into docker Hub
+Docker tag plutoweb prasantrout/plutoweb:v1.0
 
-Take note that Bash shell uses colon (:)
-Use “printenv" (or "env") to list all the environment variables.
-Use “setenv varname value" and "unsetenv varname" to set and unset an environment variable.
-Use “set varname=value" and "unset varname" to set and unset a local variable for the current process.
 
 
