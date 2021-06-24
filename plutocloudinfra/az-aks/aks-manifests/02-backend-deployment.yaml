@@ -1,0 +1,23 @@
+apiVersion: apps/v1  
+kind: Deployment
+metadata:
+  name: backend-restapi
+  labels:
+    app: backend-restapi
+    tier: backend 
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: backend-restapi
+  template:
+    metadata:
+      labels:
+        app: backend-restapi
+        tier: backend
+    spec:
+      containers:
+      - name: backend-restapi
+        image: stacksimplify/kube-helloworld:1.0.0
+        ports:
+        - containerPort: 8080
